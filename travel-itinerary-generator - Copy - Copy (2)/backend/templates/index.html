@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderly - Travel Itinerary Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header with Logo, Navigation, and Search Bar -->
+    <header>
+        <div class="header-content">
+            <!-- Logo and App Name -->
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Wanderly Logo" class="logo">
+                <h1>Wanderly</h1>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search for destinations, activities...">
+                <button>Search</button>
+            </div>
+
+            <!-- User Profile -->
+            <div class="profile">
+                <a href="#">Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <h2>Plan Your Perfect Trip</h2>
+            <!-- Step 1: Destination -->
+            <div class="step" id="step1">
+                <label>Where do you want to go?</label>
+                <input type="text" id="destination" placeholder="Enter your destination">
+                <button onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 2: Budget -->
+            <div class="step" id="step2" style="display: none;">
+                <label>What’s your budget?</label>
+                <input type="text" id="budget" placeholder="Enter your budget">
+                <button onclick="prevStep()">Back</button>
+                <button onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 3: Duration -->
+            <div class="step" id="step3" style="display: none;">
+                <label>How long will your trip be?</label>
+                <input type="text" id="duration" placeholder="Enter number of days">
+                <button onclick="prevStep()">Back</button>
+                <button onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 4: Purpose -->
+            <div class="step" id="step4" style="display: none;">
+                <label>What’s the purpose of your trip?</label>
+                <select id="purpose">
+                    <option value="Leisure">Leisure</option>
+                    <option value="Business">Business</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Family Time">Family Time</option>
+                    <option value="Romantic Getaway">Romantic Getaway</option>
+                    <option value="Cultural Exploration">Cultural Exploration</option>
+                </select>
+                <button onclick="prevStep()">Back</button>
+                <button onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 5: Preferences -->
+            <div class="step" id="step5" style="display: none;">
+                <label>Any specific preferences? (Select one or more)</label>
+                <div class="preference-buttons">
+                    <button class="preference-btn" data-value="Hiking">Hiking</button>
+                    <button class="preference-btn" data-value="Museums">Museums</button>
+                    <button class="preference-btn" data-value="Food Tours">Food Tours</button>
+                    <button class="preference-btn" data-value="Beaches">Beaches</button>
+                    <button class="preference-btn" data-value="Shopping">Shopping</button>
+                    <button class="preference-btn" data-value="Nightlife">Nightlife</button>
+                    <button class="preference-btn" data-value="Historical Sites">Historical Sites</button>
+                    <button class="preference-btn" data-value="Adventure Sports">Adventure Sports</button>
+                    <button class="preference-btn" data-value="Relaxation">Relaxation</button>
+                    <button class="preference-btn" data-value="Photography">Photography</button>
+                </div>
+                <button onclick="prevStep()">Back</button>
+                <button id="generateBtn">Generate Itinerary</button>
+            </div>
+        </div>
+
+        <!-- Itinerary Display Section -->
+        <div id="itinerary" class="container" style="display: none;">
+            <h2>Your Personalized Itinerary</h2>
+            <div id="itinerary-content" class="itinerary-content"></div>
+            <!-- Share Button -->
+            <button id="shareBtn">Share Itinerary</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
